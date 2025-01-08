@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y \
     curl \
     && docker-php-ext-install pdo pdo_pgsql mbstring zip
 
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Clone the application repository
 RUN git clone https://github.com/gerardlemetayerc/openiga.git /var/www/html
 
