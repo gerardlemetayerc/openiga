@@ -2,9 +2,7 @@
 version: "3.8"
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: openiga:2.4
     container_name: symfony-app
     ports:
       - "9000:9000"
