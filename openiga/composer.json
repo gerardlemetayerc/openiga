@@ -3,7 +3,7 @@
     "type": "project",
     "description": "A Symfony project for Identity Governance and Administration (IGA)",
     "require": {
-    "php": "^8.2",
+        "php": "^8.2",
         "symfony/framework-bundle": "^6.3",
         "symfony/orm-pack": "^2.4.1",
         "symfony/twig-bundle": "^6.3",
@@ -11,8 +11,11 @@
         "symfony/validator": "^6.3",
         "symfony/security-bundle": "^6.3",
         "symfony/maker-bundle": "^1.49",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
         "symfony/asset": "^6.3",
-        "symfony/dotenv": "^6.3"
+        "symfony/dotenv": "^6.3",
+        "symfony/flex": "^2.3",
+        "symfony/yaml": "^6.3"
     },
     "require-dev": {
         "symfony/debug-bundle": "^6.3",
@@ -27,8 +30,8 @@
     },
     "scripts": {
         "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "cache:clear": "symfony console cache:clear",
+            "assets:install %PUBLIC_DIR%": "symfony console assets:install %PUBLIC_DIR%"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -39,13 +42,10 @@
         "symfony-bin-dir": "bin"
     },
     "config": {
-        "platform": {
-            "php": "8.2"
-        },
         "allow-plugins": {
             "symfony/runtime": true,
             "symfony/flex": true,
-            "composer/package-versions-deprecated": true
+            "symfony/yaml": true
         },
         "optimize-autoloader": true,
         "preferred-install": {
