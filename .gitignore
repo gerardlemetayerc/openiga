@@ -1,0 +1,26 @@
+# Symfony / PHP
+/vendor/
+/var/
+/.env
+.env.local
+.env.*.local
+/phpunit.result.cache
+/.phpunit.result.cache
+
+# Logs and debug
+*.log
+*.cache
+
+# IDEs and editors
+/.idea/
+/*.iml
+/.vscode/
+/nbproject/
+/*.sublime-*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Composer
+/composer.lock

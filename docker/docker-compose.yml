@@ -1,0 +1,46 @@
+# Docker Compose YAML configuration
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: symfony-app
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: "pgsql://symfony:symfony@db:5432/symfony"
+
+  web:
+    image: apache:2.4
+    container_name: symfony-web
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - app
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+    command: /bin/bash -c "sed -ri -e 's!/var/www/html!/var/www/html/public!' /etc/apache2/sites-available/*.conf && apache2-foreground"
+
+  db:
+    image: postgres:15
+    container_name: symfony-db
+    environment:
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: symfony
+      POSTGRES_DB: symfony
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    driver: local

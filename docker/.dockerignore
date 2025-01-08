@@ -1,0 +1,40 @@
+# Ignorer les répertoires générés par Symfony
+/var/
+!var/.gitkeep
+
+# Ignorer les dépendances Composer (elles seront installées dans le conteneur)
+/vendor/
+!vendor/.gitkeep
+
+# Ignorer les fichiers de configuration locaux
+.env.local
+.env.*.local
+
+# Ignorer les fichiers de cache Symfony
+/phpunit.result.cache
+/.phpunit.result.cache
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les répertoires générés par les éditeurs et IDE
+/.idea/
+/*.iml
+/.vscode/
+/nbproject/
+/*.sublime-*
+
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers liés à Node.js (si non utilisé dans le projet)
+/node_modules/
+/npm-debug.log*
+/yarn-error.log*
+/.pnpm-debug.log*
+
+# Ignorer les fichiers de déploiement éventuels
+/.dockerignore
+/.git
+/.github

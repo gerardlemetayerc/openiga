@@ -1,0 +1,35 @@
+# templates/identity/list.html.twig
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h2>Liste des Identités</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Attributs</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for identity in identities %}
+            <tr>
+                <td>{{ identity.id }}</td>
+                <td>{{ identity.name }}</td>
+                <td>
+                    <ul>
+                        {% for key, value in identity.attributes %}
+                            <li><strong>{{ key }}</strong>: {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="/identity/{{ identity.id }}/edit">Modifier</a>
+                    <a href="/identity/{{ identity.id }}/delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette identité ?');">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
