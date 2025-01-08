@@ -44,6 +44,7 @@
         },
         "allow-plugins": {
             "symfony/runtime": true,
+            "symfony/flex": true,
             "composer/package-versions-deprecated": true
         },
         "optimize-autoloader": true,
