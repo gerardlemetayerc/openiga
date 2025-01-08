@@ -37,6 +37,7 @@ COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 RUN symfony new --webapp . --no-interaction || true
 
 # Install dependencies with Composer
+
 RUN composer install
 
 # Set permissions
